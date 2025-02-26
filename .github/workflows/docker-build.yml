@@ -3,8 +3,7 @@ name: Build and Push Docker Image
 on:
   push:
     branches:
-      - main
-      - feature/docker  # 添加一个分支，方便你在 fork 上测试
+      - master
 
 jobs:
   build-and-push:
