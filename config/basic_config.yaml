@@ -3,10 +3,10 @@ bot:
 master:
   name: "主人"
   id: 1840094972
-webui: True  #将Eridanus连接到webui
+webui: True  # 将Eridanus连接到webui
 group:
-  test_group: 879886836   #测试群号1，随便建个小群。bot会往里面发乱七八糟的东西，不要填用户群。
+  test_group: 879886836  # 测试群号1，随便建个小群
 adapter:
-  access_token: "any_access_token" #onebot实现部分为空/默认，一般不用改
+  access_token: ${ACCESS_TOKEN:-any_access_token}  # 默认值 any_access_token，可被环境变量覆盖
   ws_client:
-    ws_link: "ws://127.0.0.1:3001"  #bot的websocket请求地址
+    ws_link: ${WS_LINK:-ws://127.0.0.1:3001}  # 默认值 ws://127.0.0.1:3001，可被环境变量覆盖
