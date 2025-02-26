@@ -1,16 +1,21 @@
-# 基础镜像：用 Python 3.11 官方镜像
+# 基础镜像：Python 3.11 slim
 FROM python:3.11-slim
+
+# 安装系统依赖
+RUN apt-get update && apt-get install -y \
+    nodejs \
+    ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
 
 # 设置工作目录
 WORKDIR /app
 
-# 复制项目文件到容器
+# 复制项目文件
 COPY . .
 
-# 设置 PyPI 镜像源（加速国内下载）
-RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/ && \
-    pip install --no-cache-dir --upgrade pip && \
+# 安装 Python 依赖（可选加速）
+RUN pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
-# 运行 main.py
+# 默认运行
 CMD ["python", "main.py"]
