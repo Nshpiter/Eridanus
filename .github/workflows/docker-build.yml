@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - feature/docker  # 添加一个分支，方便你在 fork 上测试
 
 jobs:
   build-and-push:
@@ -27,4 +28,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/my-project:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/my-project:latest  # 用你的用户名，测试时避免冲突
